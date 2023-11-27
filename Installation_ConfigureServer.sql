@@ -21,27 +21,27 @@ GO
 
 -- Create a Database Mail profile 
 EXECUTE msdb.dbo.sysmail_add_profile_sp 
-@profile_name = 'channel.dba@vistex.com', 
-@description = 'Channel DBA Group Database Mail Profile' ; 
+@profile_name = 'dba@yourorg.com', 
+@description = 'DBA Database Mail Profile' ; 
 
 -- Create a Database Mail account 
 EXECUTE msdb.dbo.sysmail_add_account_sp 
-@account_name = 'channel.dba@vistex.com', 
-@description = 'Channel DBA Group Email Account', 
-@email_address = 'channel.dba@vistex.com', 
-@replyto_address = 'channel.dba@vistex.com', 
-@display_name = 'Channel DBA', 
-@mailserver_name = 'smtp.vistex.com' ; 
+@account_name = 'dba@yourorg.com', 
+@description = 'DBA Email Account', 
+@email_address = 'dba@yourorg.com', 
+@replyto_address = 'dba@yourorg.com', 
+@display_name = 'DBA', 
+@mailserver_name = 'smtp.yourorg.com' ; 
 
 -- Add the account to the profile 
 EXECUTE msdb.dbo.sysmail_add_profileaccount_sp 
-@profile_name = 'channel.dba@vistex.com', 
-@account_name = 'channel.dba@vistex.com', 
-@sequence_number =1 ; 
+@profile_name = 'dba@yourorg.com', 
+@account_name = 'dba@yourorg.com', 
+@sequence_number = 1 ; 
 
 -- Grant access to the profile to the DBMailUsers role 
 EXECUTE msdb.dbo.sysmail_add_principalprofile_sp 
-@profile_name = 'channel.dba@vistex.com', 
+@profile_name = 'dba@yourorg.com', 
 @principal_id = 0, 
 @is_default = 1 ; 
 
@@ -52,7 +52,7 @@ SELECT * FROM msdb.dbo.sysmail_profileaccount
 USE [msdb]
 GO
 --Create default operator
-EXEC msdb.dbo.sp_add_operator @name=N'Channel DBA', 
+EXEC msdb.dbo.sp_add_operator @name=N'DBA', 
 		@enabled=1, 
 		@weekday_pager_start_time=90000, 
 		@weekday_pager_end_time=180000, 
@@ -76,7 +76,7 @@ EXEC msdb.dbo.sp_add_alert @name=N'Severity 016',
 @include_event_description_in=1,
 @job_id=N'00000000-0000-0000-0000-000000000000'
 GO
-EXEC msdb.dbo.sp_add_notification @alert_name=N'Severity 016', @operator_name=N'Channel DBA', @notification_method = 1
+EXEC msdb.dbo.sp_add_notification @alert_name=N'Severity 016', @operator_name=N'DBA', @notification_method = 1
 GO
 EXEC msdb.dbo.sp_add_alert @name=N'Severity 017',
 @message_id=0,
@@ -86,7 +86,7 @@ EXEC msdb.dbo.sp_add_alert @name=N'Severity 017',
 @include_event_description_in=1,
 @job_id=N'00000000-0000-0000-0000-000000000000'
 GO
-EXEC msdb.dbo.sp_add_notification @alert_name=N'Severity 017', @operator_name=N'Channel DBA', @notification_method = 1
+EXEC msdb.dbo.sp_add_notification @alert_name=N'Severity 017', @operator_name=N'DBA', @notification_method = 1
 GO
 EXEC msdb.dbo.sp_add_alert @name=N'Severity 018',
 @message_id=0,
@@ -96,7 +96,7 @@ EXEC msdb.dbo.sp_add_alert @name=N'Severity 018',
 @include_event_description_in=1,
 @job_id=N'00000000-0000-0000-0000-000000000000'
 GO
-EXEC msdb.dbo.sp_add_notification @alert_name=N'Severity 018', @operator_name=N'Channel DBA', @notification_method = 1
+EXEC msdb.dbo.sp_add_notification @alert_name=N'Severity 018', @operator_name=N'DBA', @notification_method = 1
 GO
 EXEC msdb.dbo.sp_add_alert @name=N'Severity 019',
 @message_id=0,
@@ -106,7 +106,7 @@ EXEC msdb.dbo.sp_add_alert @name=N'Severity 019',
 @include_event_description_in=1,
 @job_id=N'00000000-0000-0000-0000-000000000000'
 GO
-EXEC msdb.dbo.sp_add_notification @alert_name=N'Severity 019', @operator_name=N'Channel DBA', @notification_method = 1
+EXEC msdb.dbo.sp_add_notification @alert_name=N'Severity 019', @operator_name=N'DBA', @notification_method = 1
 GO
 EXEC msdb.dbo.sp_add_alert @name=N'Severity 020',
 @message_id=0,
@@ -116,7 +116,7 @@ EXEC msdb.dbo.sp_add_alert @name=N'Severity 020',
 @include_event_description_in=1,
 @job_id=N'00000000-0000-0000-0000-000000000000'
 GO
-EXEC msdb.dbo.sp_add_notification @alert_name=N'Severity 020', @operator_name=N'Channel DBA', @notification_method = 1
+EXEC msdb.dbo.sp_add_notification @alert_name=N'Severity 020', @operator_name=N'DBA', @notification_method = 1
 GO
 EXEC msdb.dbo.sp_add_alert @name=N'Severity 021',
 @message_id=0,
@@ -126,7 +126,7 @@ EXEC msdb.dbo.sp_add_alert @name=N'Severity 021',
 @include_event_description_in=1,
 @job_id=N'00000000-0000-0000-0000-000000000000'
 GO
-EXEC msdb.dbo.sp_add_notification @alert_name=N'Severity 021', @operator_name=N'Channel DBA', @notification_method = 1
+EXEC msdb.dbo.sp_add_notification @alert_name=N'Severity 021', @operator_name=N'DBA', @notification_method = 1
 GO
 EXEC msdb.dbo.sp_add_alert @name=N'Severity 022',
 @message_id=0,
@@ -136,7 +136,7 @@ EXEC msdb.dbo.sp_add_alert @name=N'Severity 022',
 @include_event_description_in=1,
 @job_id=N'00000000-0000-0000-0000-000000000000'
 GO
-EXEC msdb.dbo.sp_add_notification @alert_name=N'Severity 022', @operator_name=N'Channel DBA', @notification_method = 1
+EXEC msdb.dbo.sp_add_notification @alert_name=N'Severity 022', @operator_name=N'DBA', @notification_method = 1
 GO
 EXEC msdb.dbo.sp_add_alert @name=N'Severity 023',
 @message_id=0,
@@ -146,7 +146,7 @@ EXEC msdb.dbo.sp_add_alert @name=N'Severity 023',
 @include_event_description_in=1,
 @job_id=N'00000000-0000-0000-0000-000000000000'
 GO
-EXEC msdb.dbo.sp_add_notification @alert_name=N'Severity 023', @operator_name=N'Channel DBA', @notification_method = 1
+EXEC msdb.dbo.sp_add_notification @alert_name=N'Severity 023', @operator_name=N'DBA', @notification_method = 1
 GO
 EXEC msdb.dbo.sp_add_alert @name=N'Severity 024',
 @message_id=0,
@@ -156,7 +156,7 @@ EXEC msdb.dbo.sp_add_alert @name=N'Severity 024',
 @include_event_description_in=1,
 @job_id=N'00000000-0000-0000-0000-000000000000'
 GO
-EXEC msdb.dbo.sp_add_notification @alert_name=N'Severity 024', @operator_name=N'Channel DBA', @notification_method = 1
+EXEC msdb.dbo.sp_add_notification @alert_name=N'Severity 024', @operator_name=N'DBA', @notification_method = 1
 GO
 EXEC msdb.dbo.sp_add_alert @name=N'Severity 025',
 @message_id=0,
@@ -166,7 +166,7 @@ EXEC msdb.dbo.sp_add_alert @name=N'Severity 025',
 @include_event_description_in=1,
 @job_id=N'00000000-0000-0000-0000-000000000000'
 GO
-EXEC msdb.dbo.sp_add_notification @alert_name=N'Severity 025', @operator_name=N'Channel DBA', @notification_method = 1
+EXEC msdb.dbo.sp_add_notification @alert_name=N'Severity 025', @operator_name=N'DBA', @notification_method = 1
 GO
 EXEC msdb.dbo.sp_add_alert @name=N'Error Number 823',
 @message_id=823,
@@ -176,7 +176,7 @@ EXEC msdb.dbo.sp_add_alert @name=N'Error Number 823',
 @include_event_description_in=1,
 @job_id=N'00000000-0000-0000-0000-000000000000'
 GO
-EXEC msdb.dbo.sp_add_notification @alert_name=N'Error Number 823', @operator_name=N'Channel DBA', @notification_method = 1
+EXEC msdb.dbo.sp_add_notification @alert_name=N'Error Number 823', @operator_name=N'DBA', @notification_method = 1
 GO
 EXEC msdb.dbo.sp_add_alert @name=N'Error Number 824',
 @message_id=824,
@@ -186,7 +186,7 @@ EXEC msdb.dbo.sp_add_alert @name=N'Error Number 824',
 @include_event_description_in=1,
 @job_id=N'00000000-0000-0000-0000-000000000000'
 GO
-EXEC msdb.dbo.sp_add_notification @alert_name=N'Error Number 824', @operator_name=N'Channel DBA', @notification_method = 1
+EXEC msdb.dbo.sp_add_notification @alert_name=N'Error Number 824', @operator_name=N'DBA', @notification_method = 1
 GO
 EXEC msdb.dbo.sp_add_alert @name=N'Error Number 825',
 @message_id=825,
@@ -196,12 +196,12 @@ EXEC msdb.dbo.sp_add_alert @name=N'Error Number 825',
 @include_event_description_in=1,
 @job_id=N'00000000-0000-0000-0000-000000000000'
 GO
-EXEC msdb.dbo.sp_add_notification @alert_name=N'Error Number 825', @operator_name=N'Channel DBA', @notification_method = 1
+EXEC msdb.dbo.sp_add_notification @alert_name=N'Error Number 825', @operator_name=N'DBA', @notification_method = 1
 GO
 
 USE [msdb]
 GO
-EXEC master.dbo.sp_MSsetalertinfo @failsafeoperator=N'Channel DBA', 
+EXEC master.dbo.sp_MSsetalertinfo @failsafeoperator=N'DBA', 
 		@notificationmethod=1
 GO
 USE [msdb]
@@ -218,7 +218,7 @@ GO
 EXEC msdb.dbo.sp_add_operator @name=N'Helpdesk', 
 		@enabled=1, 
 		@pager_days=0, 
-		@email_address=N'itproductionsupport@vistex.com'
+		@email_address=N'helpdesk@yourorg.com'
 GO
 EXEC msdb.dbo.sp_add_notification @alert_name=N'Severity 016', @operator_name=N'Helpdesk', @notification_method = 1
 GO
