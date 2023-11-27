@@ -1,4 +1,4 @@
-# T-SQLScripts
+T-SQLScripts
 
 Installation_ConfigureServer.sql
   Configures SQL Server instance for desired state including:
