@@ -1,3 +1,4 @@
+--Incorporates stored procedures from https://ola.hallengren.com/sql-server-backup.html
 USE [master]
 GO
 ALTER DATABASE [model] SET RECOVERY FULL WITH NO_WAIT
